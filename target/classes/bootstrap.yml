@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: rocketmq-redisson
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+        namespace:
+        ext-config[0]:
+          data-id: rocketmq-redisson-dev.yaml
+          group: DEFAULT_GROUP
+          refresh: true
+  main:
+    allow-bean-definition-overriding: true
+#开启端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS

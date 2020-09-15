@@ -1,0 +1,137 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "cn.jiang.common.RedissonProperties",
+      "name": "redisson",
+      "type": "cn.jiang.common.RedissonProperties"
+    },
+    {
+      "sourceType": "cn.jiang.common.rocketmq.two.config.RocketMQProperties",
+      "name": "suning.rocketmq",
+      "type": "cn.jiang.common.rocketmq.two.config.RocketMQProperties"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "cn.jiang.common.RedissonProperties",
+      "name": "redisson.address",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "cn.jiang.common.RedissonProperties",
+      "defaultValue": 10,
+      "name": "redisson.connection-minimum-idle-size",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "cn.jiang.common.RedissonProperties",
+      "defaultValue": 64,
+      "name": "redisson.connection-pool-size",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "cn.jiang.common.RedissonProperties",
+      "defaultValue": 0,
+      "name": "redisson.database",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "cn.jiang.common.RedissonProperties",
+      "defaultValue": 250,
+      "name": "redisson.master-connection-pool-size",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "cn.jiang.common.RedissonProperties",
+      "name": "redisson.master-name",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "cn.jiang.common.RedissonProperties",
+      "name": "redisson.password",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "cn.jiang.common.RedissonProperties",
+      "name": "redisson.sentinel-addresses",
+      "type": "java.lang.String[]"
+    },
+    {
+      "sourceType": "cn.jiang.common.RedissonProperties",
+      "defaultValue": 250,
+      "name": "redisson.slave-connection-pool-size",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "cn.jiang.common.RedissonProperties",
+      "defaultValue": 3000,
+      "name": "redisson.timeout",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "cn.jiang.common.rocketmq.two.config.RocketMQProperties",
+      "defaultValue": 0,
+      "name": "suning.rocketmq.consumer-batch-max-size",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "cn.jiang.common.rocketmq.two.config.RocketMQProperties",
+      "defaultValue": false,
+      "name": "suning.rocketmq.consumer-broadcasting",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "cn.jiang.common.rocketmq.two.config.RocketMQProperties",
+      "name": "suning.rocketmq.consumer-group-name",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "cn.jiang.common.rocketmq.two.config.RocketMQProperties",
+      "name": "suning.rocketmq.consumer-instance-name",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "cn.jiang.common.rocketmq.two.config.RocketMQProperties",
+      "defaultValue": false,
+      "name": "suning.rocketmq.enable-history-consumer",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "cn.jiang.common.rocketmq.two.config.RocketMQProperties",
+      "defaultValue": false,
+      "name": "suning.rocketmq.enable-order-consumer",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "cn.jiang.common.rocketmq.two.config.RocketMQProperties",
+      "name": "suning.rocketmq.namesrv-addr",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "cn.jiang.common.rocketmq.two.config.RocketMQProperties",
+      "name": "suning.rocketmq.producer-group-name",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "cn.jiang.common.rocketmq.two.config.RocketMQProperties",
+      "name": "suning.rocketmq.producer-instance-name",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "cn.jiang.common.rocketmq.two.config.RocketMQProperties",
+      "name": "suning.rocketmq.producer-tran-instance-name",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "cn.jiang.common.rocketmq.two.config.RocketMQProperties",
+      "name": "suning.rocketmq.subscribe",
+      "type": "java.util.List<java.lang.String>"
+    },
+    {
+      "sourceType": "cn.jiang.common.rocketmq.two.config.RocketMQProperties",
+      "name": "suning.rocketmq.transaction-producer-group-name",
+      "type": "java.lang.String"
+    }
+  ]
+}

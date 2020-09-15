@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+    <timestamp key="TIMESTAMP" datePattern="yyyy-MM-dd"/>
+    <property name="LOG_PATH" value="logs"/>
+    <conversionRule conversionWord="ip" converterClass="cn.jiang.configuration.LogIpConfig"/>
+
+    <springProperty scope="context" name="appName" source="spring.application.name" defaultValue="localhost.log"/>
+    <!-- 输出到控制台 -->
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <withJansi>true</withJansi>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>
+                %d{yyyy-MM-dd HH:mm:ss.SSS} | ${appName} traceId %X{X-B3-TraceId:-} spanId %X{X-B3-SpanId:-} span-export %X{X-Span-Export:-} | %highlight(%5level) | %magenta(${PID:- }) | [%thread-%ip] | %cyan(%logger:%line): %highlight(%msg%n)
+            </pattern>
+        </layout>
+    </appender>
+    <!-- 输出到文件 -->
+    <appender name="fileLog"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}${file.separator}${appName}-${TIMESTAMP}.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>
+                %d{yyyy-MM-dd HH:mm:ss.SSS} | ${appName} traceId %X{X-B3-TraceId:-} spanId %X{X-B3-SpanId:-} span-export %X{X-Span-Export:-} | %highlight(%5level) | %magenta(${PID:- }) | [%thread-%ip] | %cyan(%logger:%line): %highlight(%msg%n)
+            </pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}${file.separator}all${file.separator}${appName}-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <MaxFileSize>10MB</MaxFileSize>
+        </rollingPolicy>
+    </appender>
+
+    <!--    <appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">-->
+    <!--        <param name="Encoding" value="UTF-8"/>-->
+    <!--        <remoteHost>127.0.0.1</remoteHost>-->
+    <!--        <port>10514</port>-->
+    <!--        &lt;!&ndash; <filter class="com.program.interceptor.ELKFilter"/>&ndash;&gt;-->
+    <!--        &lt;!&ndash; encoder is required &ndash;&gt;-->
+    <!--        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder">-->
+    <!--            <customFields>{"appname":"${appName}"}</customFields>-->
+    <!--        </encoder>-->
+    <!--    </appender>-->
+
+    <logger name="com.alibaba.nacos.client.naming" level="ERROR" additivity="true"/>
+    <!-- 减少部分debug日志 -->
+    <Logger name="org.springframework.context" level="WARN"/>
+    <Logger name="org.springframework.beans" level="WARN"/>
+
+    <Logger name="com.alibaba.nacos" level="ERROR"/>
+    <logger name="org.springframework.web.filter.CommonsRequestLoggingFilter" level="DEBUG"/>
+    <!--
+    <logger name="org.apache.http.impl.conn.PoolingHttpClientConnectionManager" level="ERROR"/>
+    <logger name="com.netflix.loadbalancer" level="ERROR"/>
+    <logger name="io.lettuce.core" level="ERROR"/>-->
+    <logger name="org.springframework.data.redis.core" level="ERROR"/>
+    <logger name="net.javacrumbs.shedlock.core" level="ERROR"/>
+    <Logger name="cn.jiang.dao" level="DEBUG"/>
+    <Logger name="cn.jiang" level="INFO"/>
+    <root level="DEBUG">
+        <appender-ref ref="fileLog"/>
+        <appender-ref ref="stdout"/>
+    </root>
+
+</configuration>

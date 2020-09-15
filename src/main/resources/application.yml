@@ -1,0 +1,83 @@
+#默认使用配置
+spring:
+  datasource:
+    druid:
+      url: jdbc:mysql://127.0.0.1:3306/zcyj_product_prod?useUnicode=true&characterEncoding=utf-8&useAffectedRows=true
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.jdbc.Driver
+      initial-size: 5
+      max-active: 30
+      min-idle: 5
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: false
+      max-pool-prepared-statement-per-connection-size: 0
+      filters: stat,wall
+      connect-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+      use-global-data-source-stat: true
+      stat-view-servlet:
+        login-username: root
+        login-password: 123456
+      web-stat-filter:
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+  profiles:
+    active: dev
+suning:
+  rocketmq:
+    producerGroup: user-group
+    conumerGroup: user-group
+    namesrvaddr: 127.0.0.1:9876
+redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    jedis:
+      pool:
+        max-active: 2000
+        max-idle: 300
+        min-idle: 100
+        max-wait: 3000
+        time-between-eviction-runs: 30000
+    timeout: 10000
+    lettuce:
+       shutdown-timeout: 1000
+
+# redisson lock 单机模式
+redisson:
+  address: redis://127.0.0.1:6379
+  password:
+#哨兵模式
+#redisson:
+#  master-name: master
+#  password:
+#  sentinel-addresses: 10.47.91.83:26379,10.47.91.83:26380,10.47.91.83:26381
+#公共配置与profiles选择无关 mapperLocations指的路径是src/main/resources
+#mybatis:
+#  typeAliasesPackage: cn.jiang.model
+#  mapperLocations: classpath:mapper/*.xml
+logging:
+  config: classpath:logback-spring.xml
+mybatis-plus:
+  typeAliasesPackage: cn.jiang.model
+  mapperLocations: classpath:mapper/*.xml
+server:
+  port: 8080
+#mybatis:
+  # classpath* 此處的* 必須添加 否则会只扫描一个 jar 包，非常重要，2个小时的调试结果。
+#  mapper-locations: classpath*:mapper/**/*.xml
+#  type-aliases-package: cn.jiang.model
+#  configuration:
+#    map-underscore-to-camel-case: true
+
+
+
+#开发配置
+#spring:
+#  profiles: dev
+
