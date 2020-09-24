@@ -1,6 +1,7 @@
 package cn.jiang.controller;
 
 import cn.jiang.ciphertext.Fence;
+import cn.jiang.configuration.properties.TestProperties;
 import cn.jiang.mode.User;
 import cn.jiang.result.Result;
 import cn.jiang.service.UserService;
@@ -26,6 +27,9 @@ public class UserController {
 
     @Resource
     private UserService userService;
+
+    @Resource
+    private TestProperties testProperties;
 
     @GetMapping("/user")
     public Result getStr(@RequestParam("uid") Long uid){
@@ -65,5 +69,10 @@ public class UserController {
     @GetMapping("/witeExcel")
     public void witeExcel(HttpServletResponse response){
         userService.witeExcel(response);
+    }
+
+    @GetMapping("/testPro")
+    public  Result<List<TestProperties.Item>> testPro(){
+        return  Result.success(testProperties.getPayTypeList());
     }
 }

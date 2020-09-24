@@ -11,8 +11,8 @@ public class NacosPassword {
 //    public static String updateNacos(){
 //        return new BCryptPasswordEncoder().encode("123456");
 //    }
-
-    public static void main(String[] args) {
+//
+//    public static void main(String[] args) {
 //        System.out.println(updateNacos());
-    }
+//    }
 }
