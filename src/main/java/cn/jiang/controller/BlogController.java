@@ -5,9 +5,13 @@ import cn.jiang.properties.BlogModelRepositry;
 import cn.jiang.result.ErrorInfo;
 import cn.jiang.result.Result;
 import com.alibaba.excel.util.StringUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
+import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,9 +23,13 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/blog")
+@Slf4j
 public class BlogController {
-    @Autowired
+    @Resource
     private BlogModelRepositry blogModelRepositry;
+
+    @Resource
+    private ElasticsearchTemplate elasticsearchTemplate;
 
     @PostMapping("/add")
     public Result add(@RequestBody BlogModel blogModel){
@@ -70,4 +78,22 @@ public class BlogController {
     public Result repSearchTitle(@PathVariable String title){
         return Result.success(blogModelRepositry.findByTitleLike(title));
     }
+
+    @GetMapping("/rep/search/title/custom")
+    public Result repSearchTitleCustom(String keyword){
+        if (StringUtils.isEmpty(keyword)){
+            return  Result.success(getAll());
+        }
+
+        return Result.success(blogModelRepositry.findByTitleCustom(keyword));
+    }
+
+//    @GetMapping("/search/title")
+//    public Result searchTitle(String keyword){
+//        if (StringUtils.isEmpty(keyword)){
+//            return  Result.success(getAll());
+//        }
+//        new NativeSearchQueryBuilder()
+//                .withQuery()
+//    }
 }
